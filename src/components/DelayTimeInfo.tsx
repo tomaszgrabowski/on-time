@@ -4,14 +4,19 @@ import React from 'react';
 
 interface IProps {
   iconType: IconProp;
-  data: string | number;
-  postfix?: string;
+  data: number;
 }
 
 const DelayTimeInfo = ( props: IProps ) => {
+  const delay = ( seconds: number ): string => {
+    if ( seconds < 60 ) {
+      return `${ seconds } sek`;
+    }
+    return `${ Math.floor(seconds / 60) } min`;
+  };
   return (
     <div className='row'>
-      <FontAwesomeIcon icon={ props.iconType } size='xs' className='delay-time-info-icon'/>{ props.data } {props.postfix}
+      <FontAwesomeIcon icon={ props.iconType } size='xs' className='delay-time-info-icon'/> + { delay(props.data) }
     </div>
   );
 };

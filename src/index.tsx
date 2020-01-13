@@ -1,13 +1,13 @@
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faArrowRight, faBus, faClock, faHistory, faList, faTrain } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Routes from './Routes';
 import * as serviceWorker from './serviceWorker';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faBus, faArrowRight, faClock, faList, faHistory } from '@fortawesome/free-solid-svg-icons';
 
-library.add(fab, faBus, faArrowRight, faClock, faList, faHistory)
+library.add( fab, faBus, faArrowRight, faClock, faList, faHistory, faTrain );
 
 ReactDOM.render( <Routes/>, document.getElementById( 'root' ) );
 

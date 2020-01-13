@@ -4,17 +4,22 @@ import React from 'react';
 import './DelayRowHeader.css';
 
 interface IProps {
-  iconType: IconProp;
+  routeId: number;
   data: string | number;
 }
 
 const DelayRowHeader = ( props: IProps ) => {
+  const iconType: IconProp = props.routeId < 100 ? 'train' : 'bus';
   return (
     <div className='delay-row-header'>
-      <FontAwesomeIcon size='2x' icon='bus'/>
+      <FontAwesomeIcon size='2x' icon={ iconType }/>
       <div className='row'>
-        <FontAwesomeIcon size='xs' icon={ props.iconType } className='delay-time-info-icon'/>
-        { props.data }
+        <div className='col-1'>
+          <FontAwesomeIcon size='xs' icon='arrow-right' className='delay-time-info-icon'/>
+        </div>
+        <div className='col-9'>
+          <span className='elipsys'>{ props.data }</span>
+        </div>
       </div>
     </div>
   );

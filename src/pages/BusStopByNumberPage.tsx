@@ -120,6 +120,7 @@ const DUMMY_DATA = [
 const BusStopByNumberPage = () => {
   const [busStopNumber, setBusStopNumber] = useState( '' );
   const [delays, setDelays] = useState( DUMMY_DATA );
+  const [error, setError] = useState( '' );
   
   const onChangeHandler = ( e: React.ChangeEvent<HTMLInputElement> ) => {
     setBusStopNumber( e.target.value );
@@ -127,12 +128,21 @@ const BusStopByNumberPage = () => {
   const onSubmitHandler = async ( e: React.FormEvent<HTMLFormElement> ) => {
     e.preventDefault();
     const url = `http://ckan2.multimediagdansk.pl/delays?stopId=${ busStopNumber }`;
-    const rawData = await fetch( url );
-    const { delay } = await rawData.json();
-    setDelays( delay );
+    try {
+      const rawData = await fetch( url );
+      const { delay } = await rawData.json();
+      setDelays( delay );
+      setError('')
+    } catch ( e ) {
+      setDelays( [] );
+      setError( e.message );
+    }
   };
   return (
     <Container>
+      { error && <div className="alert alert-warning" role="alert">
+        Sprawdz poprawność wpisanych danych...
+      </div> }
       <h4>Podaj numer przystanku.</h4>
       <form onSubmit={ onSubmitHandler }>
         <div className="form-group">
