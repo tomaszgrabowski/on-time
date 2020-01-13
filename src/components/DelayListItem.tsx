@@ -1,6 +1,7 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { IDelay } from '../Shared/IDelay';
+import DelayBusNumber from './DelayBusNumber';
+import DelayRowHeader from './DelayRowHeader';
 import DelayTimeInfo from './DelayTimeInfo';
 
 interface IProps {
@@ -11,19 +12,15 @@ const DelayListItem = ( props: IProps ) => {
   return (
     <li className='list-group-item' key={ props.delay.id }>
       <div className='row'>
-        <div className='col-4 text-center vertical-center-column'>
-          <FontAwesomeIcon size='2x' icon='bus'/>
-          <div className='row'>
-            <FontAwesomeIcon size='xs' icon='arrow-right'/>{ props.delay.headsign }
-          </div>
-        
+        <div className='col-5 text-center'>
+          <DelayRowHeader iconType='arrow-right' data={ props.delay.headsign }/>
         </div>
         <div className='col-4 text-center'>
-          <h3>{ props.delay.routeId }</h3>
+          <DelayBusNumber isDelayed={ props.delay.delayInSeconds !== 0 } routeNumber={ props.delay.routeId }/>
         </div>
-        <div className='col-4 text-center'>
+        <div className='col-3 text-center'>
           <DelayTimeInfo iconType='list' data={ props.delay.theoreticalTime }/>
-          <DelayTimeInfo iconType='history' data={ props.delay.delayInSeconds }/>
+          <DelayTimeInfo iconType='history' data={ props.delay.delayInSeconds } postfix='s'/>
           <DelayTimeInfo iconType='clock' data={ props.delay.estimatedTime }/>
         </div>
       </div>

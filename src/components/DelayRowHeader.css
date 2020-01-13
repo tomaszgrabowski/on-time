@@ -1,0 +1,10 @@
+.delay-row-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.delay-row-header-data{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

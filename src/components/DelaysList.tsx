@@ -9,7 +9,7 @@ interface IProps {
 const DelaysList = ( props: IProps ) => {
   return (
     <ul className="list-group">
-      { props.delays.map( ( delay: IDelay ) => <DelayListItem delay={ delay }/> ) }
+      { props.delays.map( ( delay: IDelay ) => <DelayListItem key={delay.trip} delay={ delay }/> ) }
     </ul>
   );
 };

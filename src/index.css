@@ -18,3 +18,7 @@ code {
   flex-direction: column;
 }
 
+.delay-time-info-icon{
+  margin: .4rem .8rem 0 0;
+}
+

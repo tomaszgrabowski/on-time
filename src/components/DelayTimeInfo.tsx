@@ -5,12 +5,13 @@ import React from 'react';
 interface IProps {
   iconType: IconProp;
   data: string | number;
+  postfix?: string;
 }
 
 const DelayTimeInfo = ( props: IProps ) => {
   return (
     <div className='row'>
-      <FontAwesomeIcon icon={ props.iconType } size='xs'/>{ props.data }
+      <FontAwesomeIcon icon={ props.iconType } size='xs' className='delay-time-info-icon'/>{ props.data } {props.postfix}
     </div>
   );
 };
