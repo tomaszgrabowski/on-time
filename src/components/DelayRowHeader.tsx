@@ -13,11 +13,11 @@ const DelayRowHeader = ( props: IProps ) => {
   return (
     <div className='delay-row-header'>
       <FontAwesomeIcon size='2x' icon={ iconType }/>
-      <div className='row'>
+      <div className='row delay-row-header__route-data'>
         <div>
           <FontAwesomeIcon size='xs' icon='arrow-right' className='delay-time-info-icon'/>
         </div>
-        <div className='data'>
+        <div className='delay-row-header__text'>
           { props.data }
         </div>
       </div>
