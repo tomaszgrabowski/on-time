@@ -5,7 +5,7 @@ import DelaysList from '../components/DelaysList';
 const DUMMY_DATA = [
   {
     id: 'T12R162',
-    delayInSeconds: 7,
+    delayInSeconds: -166,
     estimatedTime: '12:43',
     headsign: 'Wrzeszcz PKP',
     routeId: 162,

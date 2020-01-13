@@ -9,14 +9,21 @@ interface IProps {
 
 const DelayTimeInfo = ( props: IProps ) => {
   const delay = ( seconds: number ): string => {
-    if ( seconds < 60 ) {
+    if ( seconds < 60 && seconds > -60 ) {
       return `${ seconds } sek`;
     }
-    return `${ Math.floor(seconds / 60) } min`;
+    return `${ Math.floor( seconds / 60 ) } min`;
+  };
+  const mathSign = ( seconds: number ): string => {
+    if ( Math.sign( seconds ) === 1 ) {
+      return '+';
+    }
+    return '-';
   };
   return (
     <div className='row'>
-      <FontAwesomeIcon icon={ props.iconType } size='xs' className='delay-time-info-icon'/> + { delay(props.data) }
+      <FontAwesomeIcon icon={ props.iconType } size='xs'
+                       className='delay-time-info-icon'/> { mathSign( props.data ) } { delay( Math.abs( props.data ) ) }
     </div>
   );
 };
