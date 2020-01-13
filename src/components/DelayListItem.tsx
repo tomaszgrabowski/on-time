@@ -16,10 +16,10 @@ const DelayListItem = ( props: IProps ) => {
         <div className='col-5 text-center'>
           <DelayRowHeader routeId={props.delay.routeId} data={ props.delay.headsign }/>
         </div>
-        <div className='col-4 text-center'>
+        <div className='col-3 text-center'>
           <DelayBusNumber isDelayed={ props.delay.delayInSeconds !== 0 } routeNumber={ props.delay.routeId }/>
         </div>
-        <div className='col-3 text-center'>
+        <div className='col-4 text-center'>
           <DelayArrivalTimeInfo iconType='list' data={ props.delay.theoreticalTime }/>
           <DelayTimeInfo iconType='history' data={ props.delay.delayInSeconds }/>
           <DelayArrivalTimeInfo iconType='clock' data={ props.delay.estimatedTime }/>
