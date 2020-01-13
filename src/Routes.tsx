@@ -5,7 +5,11 @@ import BusStopByNumberPage from './pages/BusStopByNumberPage';
 
 const navRoutes: INavRoute[] = [
   {
-    displayName: 'Znajdz po numerze przystnaku',
+    displayName: 'Po numerze przystanku',
+    path: '/'
+  },
+  {
+    displayName: 'Na mapie',
     path: '/'
   }
 ];

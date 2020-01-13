@@ -1,24 +1,40 @@
 import React, { useState } from 'react';
 import Container from '../components/Container';
+import DelaysList from '../components/DelaysList';
 
-interface IDelay {
-  id: string;
-  delayInSeconds: number;
-  estimatedTime: string;
-  headsign: string;
-  routeId: number;
-  tripId: number
-  status: string;
-  theoreticalTime: string;
-  timestamp: string;
-  trip: number;
-  vehicleCode: number;
-  vehicleId: number;
-}
+const DUMMY_DATA = [
+  {
+    id: 'T12R162',
+    delayInSeconds: 9,
+    estimatedTime: '21:50',
+    headsign: 'Wrzeszcz PKP',
+    routeId: 162,
+    tripId: 12,
+    status: 'REALTIME',
+    theoreticalTime: '21:50',
+    timestamp: '21:47:58',
+    trip: 443116,
+    vehicleCode: 2531,
+    vehicleId: 197
+  },
+  {
+    id: 'T12R163',
+    delayInSeconds: 9,
+    estimatedTime: '21:50',
+    headsign: 'Wrzeszcz PKP',
+    routeId: 163,
+    tripId: 12,
+    status: 'REALTIME',
+    theoreticalTime: '21:50',
+    timestamp: '21:47:58',
+    trip: 443116,
+    vehicleCode: 2531,
+    vehicleId: 197
+  }];
 
 const BusStopByNumberPage = () => {
   const [busStopNumber, setBusStopNumber] = useState( '' );
-  const [delays, setDelays] = useState( [] );
+  const [delays, setDelays] = useState( DUMMY_DATA );
   
   const onChangeHandler = ( e: React.ChangeEvent<HTMLInputElement> ) => {
     setBusStopNumber( e.target.value );
@@ -28,7 +44,7 @@ const BusStopByNumberPage = () => {
     const url = `http://ckan2.multimediagdansk.pl/delays?stopId=${ busStopNumber }`;
     const rawData = await fetch( url );
     const data = await rawData.json();
-    setDelays( data.delay );
+    setDelays( data );
   };
   return (
     <Container>
@@ -41,10 +57,7 @@ const BusStopByNumberPage = () => {
         <button className='btn btn-primary'>Szukaj</button>
       </form>
       <hr/>
-      { delays && <ul className="list-group">
-        { delays.map( ( delay: IDelay ) => (
-          <li className='list-group-item' key={ delay.id }>{ delay.routeId }</li>) ) }
-      </ul> }
+      { delays && <DelaysList delays={ delays }/> }
     </Container>
   );
 };
