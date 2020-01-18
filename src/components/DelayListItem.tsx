@@ -7,19 +7,20 @@ import DelayRowHeader from './DelayRowHeader';
 import DelayTimeInfo from './DelayTimeInfo';
 
 interface IProps {
-  delay: IDelay
+  delay: IDelay;
+  busStopNumber: string;
 }
 
 const DelayListItem = ( props: IProps ) => {
   return (
     <li className='list-group-item' key={ props.delay.id }>
-      <Link to={ `/MapPage/${ props.delay.vehicleId }` }>
+      <Link to={ `/MapPage/${ props.busStopNumber }/${ props.delay.vehicleId }` }>
         <div className='row'>
           <div className='col-5 text-center'>
             <DelayRowHeader routeId={ props.delay.routeId } data={ props.delay.headsign }/>
           </div>
           <div className='col-3 text-center'>
-            <DelayBusNumber isDelayed={ props.delay.delayInSeconds !== 0 } routeNumber={ props.delay.routeId }/>
+            <DelayBusNumber delay={ props.delay.delayInSeconds } routeNumber={ props.delay.routeId }/>
           </div>
           <div className='col-4 text-center'>
             <DelayArrivalTimeInfo iconType='list' data={ props.delay.theoreticalTime }/>

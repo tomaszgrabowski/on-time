@@ -1,13 +1,14 @@
 import React from 'react';
 
 interface IProps {
-  isDelayed: boolean;
+  delay: number;
   routeNumber: number;
 }
-const DelayBusNumber = (props: IProps) => {
-  const badgeClass = props.isDelayed ? 'badge-warning' : 'badge-success';
+
+const DelayBusNumber = ( props: IProps ) => {
+  const badgeClass = props.delay < 0 ? 'badge-danger' : props.delay > 0 ? 'badge-warning' : 'badge-success';
   return (
-      <span className={`badge ${badgeClass}`}><h3>{ props.routeNumber }</h3></span>
+    <span className={ `badge ${ badgeClass }` }><h3>{ props.routeNumber }</h3></span>
   );
 };
 

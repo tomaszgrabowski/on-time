@@ -18,7 +18,7 @@ const BusStopByNumberPage = () => {
       const rawData = await fetch( url );
       const { delay } = await rawData.json();
       setDelays( delay );
-      setError('')
+      setError( '' );
     } catch ( e ) {
       setDelays( [] );
       setError( e.message );
@@ -38,7 +38,7 @@ const BusStopByNumberPage = () => {
         <button className='btn btn-primary'>Szukaj</button>
       </form>
       <hr/>
-      { delays && <DelaysList delays={ delays }/> }
+      { delays && <DelaysList delays={ delays } busStopNumber={ busStopNumber }/> }
     </Container>
   );
 };

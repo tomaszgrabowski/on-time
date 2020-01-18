@@ -21,7 +21,7 @@ const Routes = () => {
       <Header appName="OnTimer" menuItems={ navRoutes }/>
       <Switch>
         <Route path='/' component={ BusStopByNumberPage } exact/>
-        <Route path='/mapPage/:vehicleId' component={ MapPage } exact/>
+        <Route path='/mapPage/:busStopId/:vehicleId' component={ MapPage } exact/>
       </Switch>
     </Router>
   );
