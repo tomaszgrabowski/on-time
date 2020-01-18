@@ -40,7 +40,6 @@ const MapPage = ( props: RouteComponentProps<{ vehicleId: string, busStopId: str
       .then( raw => raw.json()
         .then( data => {
           const { stops }: { stops: IStop[] } = data;
-          console.log( stops );
           setStopData( stops );
         } ) );
   }, [] );
@@ -57,15 +56,16 @@ const MapPage = ( props: RouteComponentProps<{ vehicleId: string, busStopId: str
           
           { stopData?.map( stop => (
             <AnyReactComponent
+              key={ stop.stopId }
               lat={ stop.stopLat }
               lng={ stop.stopLon }>
-              <FontAwesomeIcon size='3x' icon='map-marker'/>
+              <FontAwesomeIcon size='3x' icon='map-pin' color='Gray'/>
             </AnyReactComponent>
           ) ) }
           <AnyReactComponent
             lat={ gpsData?.Lat }
             lng={ gpsData?.Lon }>
-            <FontAwesomeIcon size='3x' icon='bus' color='red'/>
+            <FontAwesomeIcon size='3x' icon='bus' color='DeepPink'/>
           </AnyReactComponent>
           
         </GoogleMapReact> }
