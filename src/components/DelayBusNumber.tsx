@@ -1,4 +1,6 @@
 import React from 'react';
+import { DelayType } from '../Shared/DelayType';
+import DelayTypeBadge from './DelayTypeBadge';
 
 interface IProps {
   delay: number;
@@ -6,9 +8,12 @@ interface IProps {
 }
 
 const DelayBusNumber = ( props: IProps ) => {
-  const badgeClass = props.delay < 0 ? 'badge-danger' : props.delay > 0 ? 'badge-warning' : 'badge-success';
+  const delayType: DelayType = props.delay < 0 ? DelayType.Haste : props.delay > 0 ? DelayType.Delay : DelayType.OnTime;
   return (
-    <span className={ `badge ${ badgeClass }` }><h3>{ props.routeNumber }</h3></span>
+    <div>
+      <span><h3>{ props.routeNumber }</h3></span>
+      <DelayTypeBadge type={ delayType }/>
+    </div>
   );
 };
 
