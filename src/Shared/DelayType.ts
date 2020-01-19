@@ -1,5 +1,5 @@
 export enum DelayType{
-  Delay = 'Przybędzie opóźniony',
-  OnTime = 'Przybędzie o czasie',
-  Haste = 'Przybędzie wcześniej'
+  Delay = 'Opóźniony',
+  OnTime = 'O czasie',
+  Haste = 'Wcześniej'
 }

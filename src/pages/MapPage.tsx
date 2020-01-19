@@ -3,20 +3,10 @@ import GoogleMapReact from 'google-map-react';
 import React, { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import Container from '../components/Container';
+import Marker from '../components/Marker';
 import { IGpsData } from '../Shared/IGpsData';
 import { IStop } from '../Shared/IStops';
 
-interface IMarkerProps {
-  lat: number;
-  lng: number;
-  children: JSX.Element[] | JSX.Element
-}
-
-const AnyReactComponent = ( props: IMarkerProps ) => (
-  <div style={ { position: 'relative', transform: 'translate(-50%, -50%)' } }>
-    { props.children }
-  </div>
-);
 
 const MapPage = ( props: RouteComponentProps<{ vehicleId: string, busStopId: string }> ) => {
   const vehicleId = props.match.params.vehicleId;
@@ -43,6 +33,7 @@ const MapPage = ( props: RouteComponentProps<{ vehicleId: string, busStopId: str
           setStopData( stops );
         } ) );
   }, [] );
+  
   return (
     <Container>
       <div style={ { height: '100vh', width: '100%' } }>
@@ -55,19 +46,19 @@ const MapPage = ( props: RouteComponentProps<{ vehicleId: string, busStopId: str
           defaultZoom={ 15 }>
           
           { stopData?.map( stop => (
-            <AnyReactComponent
+            <Marker
               key={ stop.stopId }
               lat={ stop.stopLat }
               lng={ stop.stopLon }>
               <FontAwesomeIcon size='3x' icon='map-pin' color='Gray'/>
-            </AnyReactComponent>
+            </Marker>
           ) ) }
-          <AnyReactComponent
+          <Marker
             lat={ gpsData?.Lat }
             lng={ gpsData?.Lon }>
             <FontAwesomeIcon size='3x' icon='bus' color='DeepPink'/>
-          </AnyReactComponent>
-          
+          </Marker>
+
         </GoogleMapReact> }
       </div>
     </Container>

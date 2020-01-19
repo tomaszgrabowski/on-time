@@ -21,7 +21,7 @@ const DelayTimeInfo = ( props: IProps ) => {
     return '-';
   };
   return (
-    <div className='row'>
+    <div className='col-sm-12'>
       <FontAwesomeIcon icon={ props.iconType } size='xs'
                        className='delay-time-info-icon'/> { mathSign( props.data ) } { delay( Math.abs( props.data ) ) }
     </div>

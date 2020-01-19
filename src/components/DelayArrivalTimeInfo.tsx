@@ -9,7 +9,7 @@ interface IProps {
 
 const DelayArrivalTimeInfo = ( props: IProps ) => {
   return (
-    <div className='row'>
+    <div className='col-sm-12'>
       <FontAwesomeIcon icon={ props.iconType } size='xs' className='delay-time-info-icon'/>{ props.data }
     </div>
   );
