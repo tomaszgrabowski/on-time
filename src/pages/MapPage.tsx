@@ -7,7 +7,6 @@ import { RouteComponentProps } from 'react-router-dom';
 import Container from '../components/Container';
 import LinkMarker from '../components/LinkMarker';
 import Marker from '../components/Marker';
-import { baseUrl, mapKey } from '../config';
 import { IGpsData } from '../Shared/IGpsData';
 import { IStop } from '../Shared/IStops';
 
@@ -16,13 +15,13 @@ const MapPage = ( props: RouteComponentProps<{ vehicleId: string }> & Geolocated
   const vehicleId = props.match.params.vehicleId;
   const longitude = props.coords?.longitude;
   const latitude = props.coords?.latitude;
-  const gpsPositions = `${baseUrl}/gpsPositions`;
-  const stops = `${baseUrl}/stops`;
+  const gpsPositions = `/gpsPositions`;
+  const stops = `/stops`;
   
   const [gpsData, setGpsData] = useState<IGpsData | undefined>( undefined );
   const [stopData, setStopData] = useState<IStop[] | undefined>( [] );
   
-  useEffect(()=>{
+  useEffect( () => {
     fetch( gpsPositions )
       .then( raw => raw.json()
         .then( data => {
@@ -32,7 +31,7 @@ const MapPage = ( props: RouteComponentProps<{ vehicleId: string }> & Geolocated
             setGpsData( vehicle );
           }
         } ) );
-  },[]);
+  }, [] );
   
   useEffect( () => {
     fetch( stops )
@@ -56,8 +55,8 @@ const MapPage = ( props: RouteComponentProps<{ vehicleId: string }> & Geolocated
     <Container>
       <div style={ { height: '100vh', width: '100%' } }>
         { latitude && longitude && <GoogleMapReact
-          bootstrapURLKeys={ { key: mapKey } }
-          defaultCenter={ {lat: latitude, lng: longitude} }
+          bootstrapURLKeys={ { key: process.env.REACT_APP_MAPS_KEY || '' } }
+          defaultCenter={ { lat: latitude, lng: longitude } }
           defaultZoom={ 15 }>
           
           { stopData?.map( stop => (
