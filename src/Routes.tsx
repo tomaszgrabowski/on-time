@@ -6,6 +6,7 @@ import BusStop from './pages/BusStop';
 import InfoPage from './pages/InfoPage';
 import LoadingPage from './pages/LoadingPage';
 import MapPage from './pages/MapPage';
+import StopsList from './pages/StopsList';
 import { DataContext } from './Shared/DataContext';
 import { IGpsData } from './Shared/IGpsData';
 import { IStop } from './Shared/IStops';
@@ -36,6 +37,7 @@ const Routes = () => {
         <Switch>
           <Route path='/' component={ LoadingPage } exact/>
           <Route path='/info' component={ InfoPage }/>
+          <Route path='/stopsList' component={ StopsList }/>
           <Route path='/busStop/:busStopId' component={ BusStop } exact/>
           <Route path='/mapPage/:busStopId/:vehicleId' component={ MapPage } exact/>
         </Switch>
