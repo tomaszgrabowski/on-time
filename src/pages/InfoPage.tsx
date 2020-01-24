@@ -1,4 +1,5 @@
 import React from 'react';
+import { geolocated } from 'react-geolocated';
 import Container from '../components/Container';
 import { appName } from '../config';
 import Logo from '../logo.png';
@@ -17,9 +18,9 @@ const InfoPage = () => {
         Prosimy o kliknięcie przycisku "Ok" lub wyłączenie naszej aplikacji.
       </p>
       <br/><br/>
-      <button className='btn btn-primary btn-lg btn-block'>Ok</button>
+      <button className='btn btn-success btn-lg btn-block'>Ok</button>
     </Container>
   );
 };
 
-export default InfoPage;
+export default geolocated()(InfoPage);
