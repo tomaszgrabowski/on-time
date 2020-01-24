@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import Container from '../components/Container';
 import DelaysList from '../components/DelaysList';
+import { baseUrl } from '../config';
 
 const BusStop = ( props: RouteComponentProps<{ busStopId: string }> ) => {
-  const url = `/delays/${ props.match.params.busStopId }`;
+  const url = `${baseUrl}/delays/${ props.match.params.busStopId }`;
   const [delays, setDelays] = useState( [] );
   
   useEffect( () => {

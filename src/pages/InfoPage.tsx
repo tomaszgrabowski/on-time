@@ -8,11 +8,11 @@ import Logo from '../logo.png';
 const InfoPage = ( props: RouteComponentProps<{ vehicleId: string }> & GeolocatedProps ) => {
   const enabled = props.coords || false;
   
-  const agreeBadge = enabled ? <span className="badge badge-success">Ok</span> :
-    <span className="badge badge-danger">Brak zgody na lokalizację</span>;
+  const agreeBadge = enabled ? <span className="badge badge-success">Usługi lokalizacyjne wlączone...</span> :
+    <span className="badge badge-warning">Zezwól na lokalizację.</span>;
   if ( enabled ) {
     window.setTimeout( () =>
-      props.history.push( '/stopsList' ), 3000 );
+      props.history.push( '/stopsList' ), 2000 );
   }
   return (
     <Container className='text-center'>
@@ -32,7 +32,7 @@ const InfoPage = ( props: RouteComponentProps<{ vehicleId: string }> & Geolocate
           Sprawdzamy czy możliwa jest lokalizacja urządzenia...
         </p> }
         <br/><br/>
-        { agreeBadge }
+        <h3>{ agreeBadge }</h3>
       </section>
     </Container>
   );
