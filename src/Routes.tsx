@@ -43,7 +43,6 @@ const Routes = () => {
         </Switch>
       </Router>
     </DataContext.Provider>
-  
   );
 };
 

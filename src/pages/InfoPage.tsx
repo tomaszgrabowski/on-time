@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { geolocated, GeolocatedProps } from 'react-geolocated';
 import { RouteComponentProps } from 'react-router-dom';
 import Container from '../components/Container';
 import { appName } from '../config';
 import Logo from '../logo.png';
+import { DataContext } from '../Shared/DataContext';
 
 const InfoPage = ( props: RouteComponentProps<{ vehicleId: string }> & GeolocatedProps ) => {
   const enabled = props.coords || false;
@@ -12,8 +13,9 @@ const InfoPage = ( props: RouteComponentProps<{ vehicleId: string }> & Geolocate
     <span className="badge badge-warning">Zezwól na lokalizację.</span>;
   if ( enabled ) {
     window.setTimeout( () =>
-      props.history.push( '/stopsList' ), 2000 );
+      props.history.push( `/stopsList` ), 2000 );
   }
+  const data = useContext(DataContext);
   return (
     <Container className='text-center'>
       <img src={ Logo } alt={ appName }/>
