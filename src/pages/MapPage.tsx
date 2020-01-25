@@ -1,9 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as geolib from 'geolib';
 import GoogleMapReact from 'google-map-react';
 import React, { useContext, useEffect, useState } from 'react';
 import { geolocated, GeolocatedProps } from 'react-geolocated';
 import { RouteComponentProps } from 'react-router-dom';
 import Container from '../components/Container';
+import LinkMarker from '../components/LinkMarker';
 import Marker from '../components/Marker';
 import { DataContext } from '../Shared/DataContext';
 import { IGpsData } from '../Shared/IGpsData';
@@ -18,6 +20,7 @@ const MapPage = ( props: RouteComponentProps<{ vehicleId: string, busStopId: str
   
   const [vehicleData, setVehicleData] = useState<IGpsData | undefined>( undefined );
   const [currentStopData, setCurrentStopData] = useState<IStop | undefined>( undefined );
+  const [stops, setStops] = useState<IStop[] | undefined>( undefined );
   
   const dataContext = useContext( DataContext );
   
@@ -31,57 +34,43 @@ const MapPage = ( props: RouteComponentProps<{ vehicleId: string, busStopId: str
     if ( currentStop ) {
       setCurrentStopData( currentStop );
     }
-  }, [] );
-  
-  
-  // useEffect( () => {
-  //   fetch( gpsPositions )
-  //     .then( raw => raw.json()
-  //       .then( data => {
-  //         const { Vehicles }: { Vehicles: IGpsData[] } = data;
-  //         const vehicle = Vehicles.find( vehicle => vehicle.VehicleId.toString() === vehicleId );
-  //         if ( vehicle ) {
-  //           setGpsData( vehicle );
-  //         }
-  //       } ) );
-  // }, [] );
-  
-  // useEffect( () => {
-  //   fetch( stops )
-  //     .then( raw => raw.json()
-  //       .then( ( data: IStop[] ) => {
-  //
-  //         if ( longitude && latitude ) {
-  //           const x: any = data.filter( ( stop: IStop ) =>
-  //             geolib.isPointWithinRadius( {
-  //                 longitude: stop.stopLon,
-  //                 latitude: stop.stopLat
-  //               },
-  //               { longitude: longitude, latitude: latitude }
-  //               , 2000 ) );
-  //           setStopData( x );
-  //         }
-  //       } ) );
-  // }, [props.coords] );
+    
+    const stops = dataContext.stopData;
+    if ( stops && props.match.params.busStopId === '0' ) {
+      if ( longitude && latitude ) {
+        const x: any = stops.filter( ( stop: IStop ) =>
+          geolib.isPointWithinRadius( {
+              longitude: stop.stopLon,
+              latitude: stop.stopLat
+            },
+            { longitude: longitude, latitude: latitude }
+            , 2000 ) );
+        setStops( x );
+        console.log(x);
+      }
+    }
+  }, [props.coords] );
   
   return (
     <Container>
-      <div style={ { height: '100vh', width: '100%' } }>
+      <div style={ { height: '90vh', width: '100%' } }>
         { latitude && longitude && <GoogleMapReact
           bootstrapURLKeys={ { key: process.env.REACT_APP_MAPS_KEY || '' } }
           defaultCenter={ { lat: latitude, lng: longitude } }
           defaultZoom={ 15 }>
           
-          {/*{ stopData?.map( stop => (*/ }
-          {/*  <LinkMarker*/ }
-          {/*    key={ stop.stopId }*/ }
-          {/*    lat={ stop.stopLat }*/ }
-          {/*    lng={ stop.stopLon }*/ }
-          {/*    busStopNumber={ stop.stopId }*/ }
-          {/*  >*/ }
-          {/*    <FontAwesomeIcon size='3x' icon='map-pin' color='Gray'/>*/ }
-          {/*  </LinkMarker>*/ }
-          {/*) ) }*/ }
+          { stops && stops.map( stop => (
+            <LinkMarker
+              key={ stop.stopId }
+              lat={ stop.stopLat }
+              lng={ stop.stopLon }
+              busStopNumber={ stop.stopId }
+            >
+              <FontAwesomeIcon size='3x' icon='map-pin' color='Gray'/>
+            </LinkMarker>) ) }
+          { longitude && latitude && <Marker lat={ latitude } lng={ longitude }>
+            <FontAwesomeIcon size='3x' icon='male' color='Gray'/>
+          </Marker> }
           { currentStopData && <Marker lat={ currentStopData?.stopLat } lng={ currentStopData?.stopLon }>
             <FontAwesomeIcon size='3x' icon='map-pin' color='Gray'/>
           </Marker> }

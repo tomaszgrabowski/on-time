@@ -1,2 +1,2 @@
-export const baseUrl: string = 'http://localhost:1334';
+export const baseUrl: string = '';
 export const appName: string = 'On Time';

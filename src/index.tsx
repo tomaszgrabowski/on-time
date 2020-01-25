@@ -6,6 +6,7 @@ import {
   faClock,
   faHistory,
   faList,
+  faMale,
   faMapPin,
   faTrain
 } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +16,7 @@ import './index.css';
 import Routes from './Routes';
 import * as serviceWorker from './serviceWorker';
 
-library.add( fab, faBus, faArrowRight, faClock, faList, faHistory, faTrain, faMapPin );
+library.add( fab, faBus, faArrowRight, faClock, faList, faHistory, faTrain, faMapPin, faMale );
 
 ReactDOM.render( <Routes/>, document.getElementById( 'root' ) );
 

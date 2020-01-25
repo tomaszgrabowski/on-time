@@ -15,7 +15,7 @@ const StopsList = ( props: RouteComponentProps<{ vehicleId: string }> & Geolocat
         latitude: props.coords?.latitude || 0,
         longitude: props.coords?.longitude || 0
       },
-      1500
+      500
     );
   
   return (
@@ -29,7 +29,7 @@ const StopsList = ( props: RouteComponentProps<{ vehicleId: string }> & Geolocat
           latitude: stop.stopLat
         } ) ).map( stop => <Link to={ `/busStop/${ stop.stopId }` } key={ stop.stopId }
                                  className="list-group-item">{ stop.stopName } { stop.subName }</Link> ) }
-        <a className="list-group-item list-group-item-dark"><b>Wskaż na mapie</b></a>
+        <Link to={ `/mapPage/0/0 `} className="list-group-item list-group-item-dark"><b>Wskaż na mapie</b></Link>
       </div>
     </Container>
   );
