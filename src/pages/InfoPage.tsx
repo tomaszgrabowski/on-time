@@ -15,21 +15,24 @@ const InfoPage = ( props: RouteComponentProps<{ vehicleId: string }> & Geolocate
     window.setTimeout( () =>
       props.history.push( `/stopsList` ), 2000 );
   }
-  const data = useContext(DataContext);
+  const data = useContext( DataContext );
   return (
     <Container className='text-center'>
       <img src={ Logo } alt={ appName }/>
       <section>
-        <h2>
-          Szanowny użytkowniku!
-        </h2>
-        { !enabled && <p>
-          Do poprawnego działania naszej aplikacji niezbedne jest wyrażenie zgody na zlokalizowanie urządzenia.
-          Musimy to zrobić, aby jak najtrafniej określić które przystanki komunikacji miejskiej leżą w najbliższej
-          okolicy.
-          Żadne dane nie zostaną zapisane lub przesłane dalej bez twojej wyraźnej zgody.
-          Prosimy o kliknięcie przycisku "Ok" lub wyłączenie naszej aplikacji.
-        </p> }
+        
+        { !enabled && <span>
+          <h2>
+            Szanowny użytkowniku!
+          </h2>
+          <p>
+            Do poprawnego działania naszej aplikacji niezbedne jest wyrażenie zgody na zlokalizowanie urządzenia.
+            Musimy to zrobić, aby jak najtrafniej określić które przystanki komunikacji miejskiej leżą w najbliższej
+            okolicy.
+            Żadne dane nie zostaną zapisane lub przesłane dalej bez twojej wyraźnej zgody.
+            Prosimy o kliknięcie przycisku "Ok" lub wyłączenie naszej aplikacji.
+          </p>
+        </span> }
         { enabled && <p>
           Sprawdzamy czy możliwa jest lokalizacja urządzenia...
         </p> }
