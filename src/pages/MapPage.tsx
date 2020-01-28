@@ -46,7 +46,6 @@ const MapPage = ( props: RouteComponentProps<{ vehicleId: string, busStopId: str
             { longitude: longitude, latitude: latitude }
             , 2000 ) );
         setStops( x );
-        console.log(x);
       }
     }
   }, [props.coords] );

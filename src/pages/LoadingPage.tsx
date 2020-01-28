@@ -13,14 +13,14 @@ const LoadingPage = ( props: RouteComponentProps ) => {
   const dataContext = useContext( DataContext );
   
   useEffect( () => {
-    const gpsData = fetch( `${ baseUrl }/gpsPositions` )
+    const gpsData = fetch( `/gpsPositions` )
       .then( raw => raw.json()
         .then( data => {
           const { Vehicles }: { Vehicles: IGpsData[] } = data;
           dataContext.setGpsData( Vehicles );
           setProgressValue( progressValue + 50 );
         } ) );
-    const stops = fetch( `${ baseUrl }/stops` )
+    const stops = fetch( `/stops` )
       .then( raw => raw.json()
         .then( ( data: IStop[] ) => {
           dataContext.setStopData( data );
