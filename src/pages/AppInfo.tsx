@@ -17,7 +17,7 @@ const AppInfo = () => {
         <p>
           Oddaję w wasze ręce aplikację która ma za zadanie usprawnić niełatwą sztukę podróżowania
           komunikacją miejską w Gdańsku. Dołożyłem wszelkich starań, aby była ona niezawodna, przejżysta
-          i prosta w codziennym użytkowaniu.
+          i prosta w codziennym użytkowaniu...
         </p>
         <p>
           Jej głównym założeniem jest dostarczenie Wam informacji o realnych czasach przyjazdu autobusu lub tramwaju,
