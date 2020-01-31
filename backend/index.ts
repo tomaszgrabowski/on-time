@@ -1,4 +1,5 @@
-const express = require('express');
+//const express = require('express');
+import express, {Request, Response} from 'express';
 const fetch = require('node-fetch');
 const path = require('path');
 
@@ -8,20 +9,20 @@ const app = express();
 
 app.use( express.static( path.join( __dirname, 'build' ) ) );
 
-app.get( '/delays/:stopId', ( req:any, res:any ) => {
+app.get( '/delays/:stopId', ( req:Request, res:Response ) => {
     fetch( `http://ckan2.multimediagdansk.pl/delays?stopId=${ req.params.stopId }` )
       .then( ( raw: any ) => raw.json()
         .then( ( data: any ) => res.json( data ) ) );
   }
 );
 
-app.get( '/gpsPositions', ( req:any, res:any ) => {
+app.get( '/gpsPositions', ( req:Request, res:Response ) => {
     fetch( `http://ckan2.multimediagdansk.pl/gpsPositions` )
       .then( ( raw: any ) => raw.json()
         .then( ( data: any ) => res.json( data ) ) );
   }
 );
-app.get( '/stops', ( req:any, res:any ) => {
+app.get( '/stops', ( req:Request, res:Response ) => {
     fetch( `http://ckan.multimediagdansk.pl/dataset/c24aa637-3619-4dc2-a171-a23eec8f2172/resource/d3e96eb6-25ad-4d6c-8651-b1eb39155945/download/stopsingdansk.json` )
       .then( ( raw: any ) => raw.json()
         .then( ( data: any ) => res.json(
@@ -33,7 +34,7 @@ app.get( '/stops', ( req:any, res:any ) => {
   }
 );
 
-app.get( '*', ( req:any, res:any ) => {
+app.get( '*', ( req:Request, res:Response ) => {
   res.sendFile( path.join( __dirname, 'build', 'index.html' ) );
 } );
 

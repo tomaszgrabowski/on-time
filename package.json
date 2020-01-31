@@ -39,7 +39,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start": "react-scripts build | ts-node ./index.ts",
-    "backend": "ts-node ./index.ts",
+    "backend": "ts-node -P ./backend/tsconfig.json ./backend/index.ts",
     "all": "concurrently 'yarn backend' 'yarn start_react'"
   },
   "eslintConfig": {
