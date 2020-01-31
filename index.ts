@@ -1,5 +1,4 @@
 const express = require('express');
-//import express, {Request, Response} from 'express';
 const fetch = require('node-fetch');
 const path = require('path');
 
@@ -7,7 +6,7 @@ const port: number | string = process.env.PORT || 1334;
 const app = express();
 
 
-app.use( express.static( path.join( __dirname, '../build' ) ) );
+app.use( express.static( path.join( __dirname, 'build' ) ) );
 
 app.get( '/delays/:stopId', ( req:any, res:any ) => {
     fetch( `http://ckan2.multimediagdansk.pl/delays?stopId=${ req.params.stopId }` )
