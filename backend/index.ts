@@ -7,7 +7,7 @@ const port: number | string = process.env.PORT || 1334;
 const app = express();
 
 
-app.use( express.static( path.join( __dirname, 'build' ) ) );
+app.use( express.static( path.join( __dirname, '../build' ) ) );
 
 app.get( '/delays/:stopId', ( req:Request, res:Response ) => {
     fetch( `http://ckan2.multimediagdansk.pl/delays?stopId=${ req.params.stopId }` )
@@ -35,7 +35,7 @@ app.get( '/stops', ( req:Request, res:Response ) => {
 );
 
 app.get( '*', ( req:Request, res:Response ) => {
-  res.sendFile( path.join( __dirname, 'build', 'index.html' ) );
+  res.sendFile( path.join( __dirname, 'build', 'index.html' ));
 } );
 
 console.log( `App is starting on port ${ port }` );
