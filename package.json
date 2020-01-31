@@ -38,7 +38,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "react-scripts build | yarn backend",
+    "start": "react-scripts build | ts-node -P ./backend/tsconfig.json ./backend/index.ts",
     "backend": "ts-node -P ./backend/tsconfig.json ./backend/index.ts",
     "all": "concurrently 'yarn backend' 'yarn start_react'"
   },
