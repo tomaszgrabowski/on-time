@@ -14,44 +14,44 @@ import { IGpsData } from './Shared/IGpsData';
 import { IStop } from './Shared/IStops';
 
 const navRoutes: INavRoute[] = [
-  {
-    displayName: 'Szukaj',
-    path: '/'
-  },
-  {
-    displayName: 'Info',
-    path: '/appinfo'
-  },
-  {
-    displayName: 'Autor',
-    path: '/Author'
-  }
+    {
+        displayName: 'Szukaj',
+        path: '/'
+    },
+    {
+        displayName: 'Info',
+        path: '/appinfo'
+    },
+    {
+        displayName: 'Autor',
+        path: '/Author'
+    }
 ];
 const Routes = () => {
-  const [gpsData, setGpsData] = useState<IGpsData[]>( [] );
-  const [stopData, setStopData] = useState<IStop[]>( [] );
-  
-  return (
-    <DataContext.Provider value={ {
-      gpsData: gpsData,
-      setGpsData,
-      stopData: stopData,
-      setStopData
-    } }>
-      <Router>
-        <Header appName={ appName } menuItems={ navRoutes }/>
-        <Switch>
-          <Route path='/' component={ LoadingPage } exact/>
-          <Route path='/appinfo' component={ AppInfo }/>
-          <Route path='/author' component={ Author }/>
-          <Route path='/info' component={ InfoPage }/>
-          <Route path='/stopsList' component={ StopsList }/>
-          <Route path='/busStop/:busStopId' component={ BusStop } exact/>
-          <Route path='/mapPage/:busStopId/:vehicleId' component={ MapPage } exact/>
-        </Switch>
-      </Router>
-    </DataContext.Provider>
-  );
+    const [gpsData, setGpsData] = useState<IGpsData[]>( [] );
+    const [stopData, setStopData] = useState<IStop[]>( [] );
+    const [currentStopData, setCurrentStopData] = useState<IStop>( {} as IStop );
+    
+    return (
+      <DataContext.Provider value={ {
+          stopData: stopData,
+          setStopData,
+          currentStopData: currentStopData,
+          setCurrentStopData
+      } }>
+          <Router>
+              <Header appName={ appName } menuItems={ navRoutes }/>
+              <Switch>
+                  <Route path='/' component={ LoadingPage } exact/>
+                  <Route path='/appinfo' component={ AppInfo }/>
+                  <Route path='/author' component={ Author }/>
+                  <Route path='/stopsList' component={ StopsList }/>
+                  <Route path='/busStop/:busStopId' component={ BusStop } exact/>
+                  <Route path='/mapPage/:busStopId/:vehicleId' component={ MapPage } exact/>
+              </Switch>
+          </Router>
+      </DataContext.Provider>
+    );
 };
 
 export default Routes;
