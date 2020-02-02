@@ -48,6 +48,12 @@ const StopsList = ( props: RouteComponentProps<{ vehicleId: string }> & Geolocat
             <div className="spinner-border text-danger" role="status">
               <span className="sr-only">Loading...</span>
             </div>
+            <p>
+              Jeśli proses trwa zbyt długo, może oznaczać to problemy z usługami lokalizacyjnymi twojej przeglądarki.
+            </p>
+            <p>
+              Odśwież stronę lub spróbuj innej przeglądarki
+            </p>
           </div> }
         { stops.length !== 0 &&
         <Link to={ `/mapPage/0/0 ` } className="list-group-item list-group-item-dark"><b>Wskaż na mapie</b></Link> }
