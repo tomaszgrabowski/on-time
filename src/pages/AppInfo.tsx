@@ -6,7 +6,7 @@ import Logo from '../logo.png';
 const AppInfo = () => {
   return (
     <Container className='text-center'>
-      <img src={ Logo } alt={ appName }/>
+      <img className='logo' src={ Logo } alt={ appName }/>
       <section>
         <h2>
           Aplikacja OnTime v0.1 (beta)

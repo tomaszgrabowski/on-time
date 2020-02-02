@@ -14,6 +14,7 @@ function CollapsibleMenu ( props: IProps ) {
         { props.menuItems.map( ( item: INavRoute ) => (
           <NavLink
             key={ item.displayName }
+            exact
             className='nav-item nav-link'
             activeClassName='active'
             to={ item.path }>

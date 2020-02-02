@@ -18,7 +18,7 @@ const InfoPage = ( props: RouteComponentProps<{ vehicleId: string }> & Geolocate
   const data = useContext( DataContext );
   return (
     <Container className='text-center'>
-      <img src={ Logo } alt={ appName }/>
+      <img className='logo' src={ Logo } alt={ appName }/>
       <section>
         
         { !enabled && <span>
