@@ -16,7 +16,7 @@ const AppInfo = () => {
         </p>
         <p>
           Oddaję w wasze ręce aplikację która ma za zadanie usprawnić niełatwą sztukę podróżowania
-          komunikacją miejską w Gdańsku. Dołożyłem wszelkich starań, aby była ona niezawodna, przejżysta
+          komunikacją miejską w Gdańsku. Dołożyłem wszelkich starań, aby była ona niezawodna, przejrzysta
           i prosta w codziennym użytkowaniu...
         </p>
         <p>

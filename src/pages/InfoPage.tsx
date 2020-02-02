@@ -30,7 +30,6 @@ const InfoPage = ( props: RouteComponentProps<{ vehicleId: string }> & Geolocate
             Musimy to zrobić, aby jak najtrafniej określić które przystanki komunikacji miejskiej leżą w najbliższej
             okolicy.
             Żadne dane nie zostaną zapisane lub przesłane dalej bez twojej wyraźnej zgody.
-            Prosimy o kliknięcie przycisku "Ok" lub wyłączenie naszej aplikacji.
           </p>
         </span> }
         { enabled && <p>
