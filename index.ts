@@ -9,7 +9,7 @@ const app = express();
 app.use( express.static( path.join( __dirname, 'build' ) ) );
 
 app.use(function(req: any, res: any, next: any) {
-  var schema = (req.headers['x-forwarded-proto'] || '').toLowerCase();
+  var schema = (req.headers['X-Forwarded-Proto'] || '').toLowerCase();
   if (schema === 'https') {
     next();
   } else {
