@@ -10,9 +10,7 @@ app.use( express.static( path.join( __dirname, 'build' ) ) );
 
 app.use(function(req: any, res: any, next: any) {
   var schema = (req.headers['X-Forwarded-Proto'] || '').toLowerCase();
-  if (schema === 'https') {
-    next();
-  } else {
+  if (schema === 'http') {
     res.redirect('https://' + req.headers.host + req.url);
   }
 });
