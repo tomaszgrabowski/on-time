@@ -8,6 +8,15 @@ const app = express();
 
 app.use( express.static( path.join( __dirname, 'build' ) ) );
 
+app.use(function(req: any, res: any, next: any) {
+  var schema = (req.headers['x-forwarded-proto'] || '').toLowerCase();
+  if (schema === 'https') {
+    next();
+  } else {
+    res.redirect('https://' + req.headers.host + req.url);
+  }
+});
+
 app.get( '/delays/:stopId', ( req: any, res: any ) => {
       fetch( `http://ckan2.multimediagdansk.pl/delays?stopId=${ req.params.stopId }` )
         .then( ( raw: any ) => raw.json()
@@ -29,6 +38,8 @@ app.get( '/stops', ( req: any, res: any ) => {
           ) ) );
   }
 );
+
+
 
 app.get( '*', ( req: any, res: any ) => {
     res.sendFile( path.join( __dirname, 'build', 'index.html' ) );
