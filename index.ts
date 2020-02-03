@@ -8,14 +8,6 @@ const app = express();
 
 app.use( express.static( path.join( __dirname, 'build' ) ) );
 
-app.use(function(req: any, res: any, next: any) {
-  var schema = (req.headers['X-Forwarded-Proto'] || '').toLowerCase();
-  console.log(schema, 'https://' + req.headers.host + req.url);
-  if (schema === 'http') {
-    res.redirect('https://' + req.headers.host + req.url);
-  }
-});
-
 app.get( '/delays/:stopId', ( req: any, res: any ) => {
       fetch( `http://ckan2.multimediagdansk.pl/delays?stopId=${ req.params.stopId }` )
         .then( ( raw: any ) => raw.json()
