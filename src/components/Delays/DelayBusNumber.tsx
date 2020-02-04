@@ -1,5 +1,5 @@
 import React from 'react';
-import { DelayType } from '../Shared/DelayType';
+import { DelayType } from '../../Shared/DelayType';
 import DelayTypeBadge from './DelayTypeBadge';
 
 interface IProps {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IDelay } from '../Shared/IDelay';
+import { IDelay } from '../../Shared/IDelay';
 import DelayListItem from './DelayListItem';
 
 interface IProps {

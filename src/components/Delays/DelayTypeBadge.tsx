@@ -1,6 +1,5 @@
 import React from 'react';
-import { DelayType } from '../Shared/DelayType';
-
+import { DelayType } from '../../Shared/DelayType';
 
 interface IProps {
   type: DelayType

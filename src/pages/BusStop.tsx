@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+import DelaysList from '../components/Delays/DelaysList';
 import Container from '../components/Container';
-import DelaysList from '../components/DelaysList';
 import { DataContext } from '../Shared/DataContext';
 import { getDelay } from '../Shared/DataService';
 

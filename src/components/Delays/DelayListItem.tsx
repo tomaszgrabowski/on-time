@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { IDelay } from '../Shared/IDelay';
+import { IDelay } from '../../Shared/IDelay';
 import DelayArrivalTimeInfo from './DelayArrivalTimeInfo';
 import DelayRowHeader from './DelayRowHeader';
 import DelayTimeInfo from './DelayTimeInfo';
