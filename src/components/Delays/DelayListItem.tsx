@@ -25,7 +25,7 @@ const DelayListItem = ( props: IProps ) => {
           <div className='col-6'>
             <div>
               <DelayArrivalTimeInfo iconType='list' data={ props.delay.theoreticalTime }/>
-              <DelayTimeInfo iconType='history' data={ props.delay.delayInSeconds }/>
+              {/*<DelayTimeInfo iconType='history' data={ props.delay.delayInSeconds }/>*/}
               <DelayArrivalTimeInfo iconType='clock' data={ props.delay.estimatedTime }/>
             </div>
           </div>

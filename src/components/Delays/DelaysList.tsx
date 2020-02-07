@@ -1,20 +1,20 @@
 import React from 'react';
 import { IDelay } from '../../Shared/IDelay';
-import DelayListItem from './DelayListItem';
+import DelayCard from '../DelaysCard/DelayCard';
 
 interface IProps {
-  delays: IDelay[];
-  busStopNumber: string;
+    delays: IDelay[];
+    busStopNumber: string;
 }
 
 const DelaysList = ( props: IProps ) => {
-  return (
-    <ul className="list-group">
-      { props.delays.map( ( delay: IDelay ) => <DelayListItem key={ delay.trip }
-                                                              delay={ delay }
-                                                              busStopNumber={ props.busStopNumber }/> ) }
-    </ul>
-  );
+    return (
+        <div className="row">
+            { props.delays.map( ( delay: IDelay ) => <DelayCard key={ delay.trip }
+                                                                delay={ delay }
+                                                                busStopNumber={ props.busStopNumber }/> ) }
+        </div>
+    );
 };
 
 export default DelaysList;

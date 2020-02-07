@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import DelaysList from '../components/Delays/DelaysList';
+import DelaysCardsList from '../components/DelaysCard/DelaysCardsList';
 import Container from '../components/Container';
 import { DataContext } from '../Shared/DataContext';
 import { getDelay } from '../Shared/DataService';
@@ -23,7 +23,7 @@ const BusStop = ( props: RouteComponentProps<{ busStopId: string }> ) => {
     
     return (
       <Container>
-          { delays && <DelaysList delays={ delays } busStopNumber={ props.match.params.busStopId }/> }
+          { delays && <DelaysCardsList delays={ delays } busStopNumber={ props.match.params.busStopId }/> }
       </Container>
     );
 };
