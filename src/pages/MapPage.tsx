@@ -70,8 +70,7 @@ const MapPage = ( props: RouteComponentProps<{ vehicleId: string, busStopId: str
                                 key={ stop.stopId }
                                 lat={ stop.stopLat }
                                 lng={ stop.stopLon }
-                                busStopNumber={ stop.stopId }
-                            >
+                                busStopNumber={ stop.stopId }>
                                 <FontAwesomeIcon size='3x' icon='map-pin' color='Gray'/>
                             </LinkMarker>) ) }
                             { longitude && latitude && <Marker lat={ latitude } lng={ longitude }>
