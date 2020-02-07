@@ -1,14 +1,15 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import {
-  faArrowRight,
-  faBus,
-  faClock,
-  faHistory,
-  faList,
-  faMale,
-  faMapPin,
-  faTrain
+    faArrowRight,
+    faBus,
+    faClock,
+    faHistory,
+    faList,
+    faMale,
+    faMapPin,
+    faStoreAlt,
+    faTrain
 } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -16,7 +17,7 @@ import './index.css';
 import Routes from './Routes';
 import * as serviceWorker from './serviceWorker';
 
-library.add( fab, faBus, faArrowRight, faClock, faList, faHistory, faTrain, faMapPin, faMale );
+library.add( fab, faBus, faArrowRight, faClock, faList, faHistory, faTrain, faMapPin, faMale, faStoreAlt );
 
 ReactDOM.render( <Routes/>, document.getElementById( 'root' ) );
 
