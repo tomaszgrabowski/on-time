@@ -52,7 +52,7 @@ const StopsList = ( props: RouteComponentProps<{ vehicleId: string }> & Geolocat
                         </div>
                     </div> }
                 { stops.length !== 0 &&
-                <Link to={ `/mapPage/0/0 ` } className="list-group-item list-group-item-dark"><b>Wskaż na
+                <Link to={ `/mapPage/0/0 ` } className="list-group-item list-group-item-warning"><b>Wskaż na
                   mapie</b></Link> }
             </div>
         </Container>
