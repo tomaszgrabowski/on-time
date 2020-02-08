@@ -1,0 +1,21 @@
+.delay-row-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.delay-row-header__route-data{
+    padding-top: 1rem;
+}
+.flex-inline{
+    display: flex;
+    align-items: baseline;
+    flex-direction: row;
+    width: 100%;
+}
+.delay-row-header__text{
+    padding-top:.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: .8rem;
+}

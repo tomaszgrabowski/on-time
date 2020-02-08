@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import Container from '../components/Container';
-import DelaysCardsList from '../components/DelaysCard/DelaysCardsList';
+import DelaysList from '../components/DelaysList';
 import { DataContext } from '../Shared/DataContext';
 import { getDelay } from '../Shared/DataService';
 
@@ -16,6 +16,7 @@ const BusStop = ( props: RouteComponentProps<{ busStopId: string }> ) => {
     
     useEffect( () => {
         getDelay( props.match.params.busStopId )
+<<<<<<< HEAD
             .then( data => {
                 const { delay } = data;
                 setDelays( delay );
@@ -56,6 +57,18 @@ const BusStop = ( props: RouteComponentProps<{ busStopId: string }> ) => {
             </button>
 >>>>>>> stg
         </Container>
+=======
+          .then( data => {
+              const { delay } = data;
+              setDelays( delay );
+          } );
+    }, [] );
+    
+    return (
+      <Container>
+          { delays && <DelaysList delays={ delays } busStopNumber={ props.match.params.busStopId }/> }
+      </Container>
+>>>>>>> parent of 94efa25... Squashed commit of the following:
     );
 };
 

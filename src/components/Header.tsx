@@ -1,7 +1,7 @@
 import React from 'react';
-import Container from '../../components/Container';
 import BrandName from './BrandName';
 import CollapsibleMenu from './CollapsibleMenu';
+import Container from './Container';
 import TogglerButton from './TogglerButton';
 
 export interface INavRoute {

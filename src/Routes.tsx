@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header, { INavRoute } from './components/Navigation/Header';
+import Header, { INavRoute } from './components/Header';
 import { appName } from './config';
 import AppInfo from './pages/AppInfo';
 import Author from './pages/Author';
 import BusStop from './pages/BusStop';
+import InfoPage from './pages/InfoPage';
 import LoadingPage from './pages/LoadingPage';
 import MapPage from './pages/MapPage';
 import StopsList from './pages/StopsList';
 import { DataContext } from './Shared/DataContext';
+import { IGpsData } from './Shared/IGpsData';
 import { IStop } from './Shared/IStops';
 
 const navRoutes: INavRoute[] = [
@@ -26,6 +28,7 @@ const navRoutes: INavRoute[] = [
     }
 ];
 const Routes = () => {
+    const [gpsData, setGpsData] = useState<IGpsData[]>( [] );
     const [stopData, setStopData] = useState<IStop[]>( [] );
     const [currentStopData, setCurrentStopData] = useState<IStop>( {} as IStop );
     
