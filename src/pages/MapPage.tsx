@@ -87,8 +87,8 @@ const MapPage = ( props: RouteComponentProps<{ vehicleId: string, busStopId: str
                             </Marker> }
                     </GoogleMapReact>
                     <button className='btn btn-link btn-block' onClick={ () => props.history.goBack() }>
-                    Powrót
-                </button>
+                        Powrót
+                    </button>
                 </span> :
                     <div className='text-center'>
                         <div className="spinner-border text-warning" role="status">
