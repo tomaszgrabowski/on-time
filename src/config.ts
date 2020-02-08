@@ -1,2 +1,2 @@
 export const baseUrl: string = '';
-export const appName: string = 'On Time';
+export const appName: string = 'przystanek.online';
