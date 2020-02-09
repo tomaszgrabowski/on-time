@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import CityPage from './pages/CityPage';
 import Header, { INavRoute } from './components/Navigation/Header';
 import { appName } from './config';
 import AppInfo from './pages/AppInfo';
@@ -39,7 +40,8 @@ const Routes = () => {
           <Router>
               <Header appName={ appName } menuItems={ navRoutes }/>
               <Switch>
-                  <Route path='/' component={ LoadingPage } exact/>
+                  <Route path='/' component={ CityPage } exact/>
+                  <Route path='/loading' component={ LoadingPage }/>
                   <Route path='/appinfo' component={ AppInfo }/>
                   <Route path='/author' component={ Author }/>
                   <Route path='/stopsList' component={ StopsList }/>
