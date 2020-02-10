@@ -1,8 +1,8 @@
+import { IGdanskStop } from '../../Gdansk.interfaces';
 import * as geolib from 'geolib';
 import React, { useContext, useEffect, useState } from 'react';
 import { geolocated, GeolocatedProps } from 'react-geolocated';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { IStop } from '../../index';
 import Container from '../components/Container';
 import { DataContext } from '../Shared/DataContext';
 import { ICoords } from '../Shared/ICoords';
@@ -10,7 +10,7 @@ import { getStopsFromLocalCache } from '../Shared/LocalStorageService';
 
 const StopsList = ( props: RouteComponentProps<{ vehicleId: string }> & GeolocatedProps ) => {
     const data = useContext( DataContext );
-    const [stops, setStops] = useState( [] as IStop[] );
+    const [stops, setStops] = useState( [] as IGdanskStop[] );
     
     useEffect( () => {
         if ( data.stopData.length === 0 ) {
