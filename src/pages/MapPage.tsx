@@ -53,7 +53,7 @@ const MapPage = ( props: RouteComponentProps<{ city: string, vehicleId: string, 
                   latitude: stop.stopLat
                 },
                 { longitude: longitude, latitude: latitude }
-                , 2000 ) );
+                , 1000 ) );
         setStops( x );
       }
     }
@@ -73,7 +73,9 @@ const MapPage = ( props: RouteComponentProps<{ city: string, vehicleId: string, 
                                 key={ stop.stopId }
                                 lat={ stop.stopLat }
                                 lng={ stop.stopLon }
-                                busStopNumber={ stop.stopId }>
+                                busStopNumber={ stop.stopId }
+                                city={city}
+                            >
                               <FontAwesomeIcon size='3x' icon='map-pin' color='Gray'/>
                             </LinkMarker>) ) }
                           { longitude && latitude && <Marker lat={ latitude } lng={ longitude }>
