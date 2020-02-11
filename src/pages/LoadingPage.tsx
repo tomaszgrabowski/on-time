@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { geolocated } from 'react-geolocated';
 import { RouteComponentProps } from 'react-router-dom';
+import { appName } from '../Routes';
 import Container from '../components/Container';
-import { appName } from '../config';
 import Logo from '../logo.png';
 import { DataContext } from '../Shared/DataContext';
 import { getStops } from '../Shared/DataService';

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CityPage from './pages/CityPage';
 import Header, { INavRoute } from './components/Navigation/Header';
-import { appName } from './config';
 import AppInfo from './pages/AppInfo';
 import Author from './pages/Author';
 import BusStop from './pages/BusStop';
@@ -26,6 +25,9 @@ const navRoutes: INavRoute[] = [
         path: '/Author'
     }
 ];
+
+export const appName: string = "przystanek.online";
+
 const Routes = () => {
     const [stopData, setStopData] = useState<IStop[]>( [] );
     const [currentStopData, setCurrentStopData] = useState<IStop>( {} as IStop );

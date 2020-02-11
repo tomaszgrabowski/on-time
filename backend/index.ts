@@ -1,8 +1,8 @@
-import { Endpoint } from '../common/Endpoint';
-import { ICommonStop, IDelayResponse } from '../common/common.interfaces';
-import { IGdanskGpsPositionsResponse, IGdanskStop } from '../common/Gdansk.interfaces';
-import { IGdyniaStop } from '../common/Gdynia.interfaces';
-import { getUrlFromConfig } from '../../src/config';
+import { ICommonStop, IDelayResponse } from './Common.interfaces';
+import { getUrlFromConfig } from './config';
+import { Endpoint } from './Endpoint';
+import { IGdanskGpsPositionsResponse, IGdanskStop } from './Gdansk.interfaces';
+import { IGdyniaStop } from './Gdynia.interfaces';
 
 const express = require( 'express' );
 const fetch = require( 'node-fetch' );

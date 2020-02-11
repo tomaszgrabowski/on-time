@@ -1,4 +1,4 @@
-import { IGdanskStop } from '../../Gdansk.interfaces';
+import { IGdanskStop } from './../../backend/Gdansk.interfaces';
 import * as geolib from 'geolib';
 import React, { useContext, useEffect, useState } from 'react';
 import { geolocated, GeolocatedProps } from 'react-geolocated';

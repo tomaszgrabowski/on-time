@@ -1,5 +1,5 @@
-import { City } from './common/City';
-import { Endpoint } from './common/Endpoint';
+import { City } from './City';
+import { Endpoint } from './Endpoint';
 
 export const urls: IHaveEndpoints = {
     [Endpoint.delays]: {
@@ -25,3 +25,4 @@ export type IHaveEndpoints = {
 }
 
 export const getUrlFromConfig = ( endpoint: Endpoint, city: City ) => urls[endpoint][city];
+export const appName: string = 'przystanek.online';

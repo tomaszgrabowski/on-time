@@ -1,6 +1,6 @@
 import React from 'react';
+import { appName } from '../Routes';
 import Container from '../components/Container';
-import { appName } from '../config';
 import Logo from '../logo.png';
 
 const AppInfo = () => {
