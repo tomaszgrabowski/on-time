@@ -5,6 +5,6 @@ export const getLocalCache = () => {
   const lastUpdate = localStorage.getItem( "lastUpdate" ) || '';
   const city = localStorage.getItem( "city" ) || '';
   const stops = JSON.parse( stopsString );
-  const tooOld = moment().diff( lastUpdate, 'days' ) > 7;
+  const tooOld = moment().utc().diff( lastUpdate, 'days' ) > 7;
   return { tooOld, stops, city };
 };

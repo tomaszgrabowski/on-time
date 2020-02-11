@@ -24,7 +24,7 @@ const LoadingPage = ( props: RouteComponentProps<{ city: string }> ) => {
           .then( data => {
                 dataContext.setStopData( data );
                 localStorage.setItem( 'stops', JSON.stringify( data ) );
-                localStorage.setItem( 'lastUpdate', `"${ new Date().toISOString() }"` );
+                localStorage.setItem( 'lastUpdate', `"${ new Date().toUTCString() }"` );
                 localStorage.setItem('city', currentCity);
               }
           );
