@@ -19,7 +19,7 @@ export interface IDelayResponse {
 }
 
 export interface ICommonStop {
-    stopLat: number;
-    stopLon: number;
+    stopLat: string;
+    stopLon: string;
     stopFullName: string;
 }

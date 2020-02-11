@@ -40,8 +40,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "react-scripts build | ts-node ./index.ts",
-    "backend": "ts-node ./index.ts",
+    "start": "react-scripts build | ts-node ./backend/index.ts",
+    "backend": "ts-node ./backend/index.ts",
     "all": "concurrently 'yarn backend' 'yarn start_react'"
   },
   "eslintConfig": {

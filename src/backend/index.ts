@@ -1,12 +1,8 @@
-import { ICommonStop, IDelayResponse } from 'ApiResponseInterfaces/Common.interfaces';
-import {
-    IGdanskGpsPositionsResponse,
-    IGdanskStop,
-    IGdanskStopsResponse
-} from 'ApiResponseInterfaces/Gdansk.interfaces';
-import { IGdyniaStop, IGdyniaStopsResponse } from 'ApiResponseInterfaces/Gdynia.interfaces';
-import { getUrlFromConfig } from './config';
-import { Endpoint } from './Endpoint';
+import { Endpoint } from '../common/Endpoint';
+import { ICommonStop, IDelayResponse } from '../common/common.interfaces';
+import { IGdanskGpsPositionsResponse, IGdanskStop } from '../common/Gdansk.interfaces';
+import { IGdyniaStop } from '../common/Gdynia.interfaces';
+import { getUrlFromConfig } from '../../src/config';
 
 const express = require( 'express' );
 const fetch = require( 'node-fetch' );
@@ -35,15 +31,14 @@ app.get( '/gpsPositions/:city', ( req: any, res: any ) => {
 app.get( '/stops/:city', ( req: any, res: any ) => {
         fetch( `${ getUrlFromConfig( Endpoint.stops, req.params.city ) }` )
             .then( ( raw: any ) => raw.json()
-                .then( ( data: IGdanskStopsResponse | IGdyniaStopsResponse ): ICommonStop[] => {
-                    return data.stops.map((stop: IGdanskStop | IGdyniaStop): ICommonStop => {
+                .then( ( data: any ): ICommonStop[] => {
+                    return data.map( ( stop: IGdanskStop & IGdyniaStop ): ICommonStop => {
                         return {
-                            stopLat: stop.stopLat,
-                            stopLon: stop.stopLon,
-                            stopFullName: stop.stopName + stop.
-                        }
-                    });
-                    //res.json( data );
+                            stopLat: `${stop.stopLat}`,
+                            stopLon: `${stop.stopLon}`,
+                            stopFullName: stop.subName ? `${ stop.stopName } ${ stop.subName }` : `${ stop.stopName }`
+                        };
+                    } );
                 } ) );
     }
 );
