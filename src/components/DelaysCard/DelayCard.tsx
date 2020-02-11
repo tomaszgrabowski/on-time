@@ -9,6 +9,7 @@ import DelayTimeInfo from './DelayTimeInfo';
 interface IProps {
     delay: IDelay;
     busStopNumber: string;
+    city: string
 }
 
 const DelayCard = ( props: IProps ) => {
@@ -19,9 +20,9 @@ const DelayCard = ( props: IProps ) => {
             <div className="card">
                 <h5 className="card-header bg-warning">
                     <div className="row">
-                        <div className='col-2'><FontAwesomeIcon size='1x' icon={ iconType }/></div>
-                        <div className='col-7 text-center'>{ props.delay.routeId }</div>
-                        <div className='col-3'>{ props.delay.estimatedTime }</div>
+                        <div className='col-3'><FontAwesomeIcon size='1x' icon={ iconType }/></div>
+                        <div className='col-5 text-center'>{ props.delay.routeId }</div>
+                        <div className='col-4 float-right'>{ props.delay.estimatedTime }</div>
                     </div>
                 </h5>
                 <div className="card-body">
@@ -35,7 +36,7 @@ const DelayCard = ( props: IProps ) => {
                     </div>
                 </div>
                 <div className="card-footer bg-transparent">
-                    <Link to={ `/MapPage/${ props.busStopNumber }/${ props.delay.vehicleId }` }>
+                    <Link to={ `/MapPage/${props.city}/${ props.busStopNumber }/${ props.delay.vehicleId }` }>
                         <button className='btn btn-link btn-block'>
                             Pozycja pojazdu...
                         </button>

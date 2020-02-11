@@ -1,7 +1,3 @@
-export interface IGdyniaStopsResponse {
-    stops: IGdyniaStop[]
-}
-
 export interface IGdyniaStop {
     stopId: number;
     stopName: string;

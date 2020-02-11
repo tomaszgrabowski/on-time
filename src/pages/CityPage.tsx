@@ -5,12 +5,16 @@ import Container from '../components/Container';
 const CityPage = () => {
     return (
         <Container>
-            <Link to='/loading'
+            <Link to={`/loading/gdansk`}
                 type="button"
                 className="btn btn-warning btn-lg btn-block">
-                Gdańsk
+              Gdańsk
             </Link>
-            <button disabled type="button" className="btn btn-warning btn-lg btn-block">Gdynia</button>
+          <Link to={`/loading/gdynia`}
+                type="button"
+                className="btn btn-warning btn-lg btn-block">
+            Gdynia
+          </Link>
         </Container>
     );
 };
