@@ -6,11 +6,12 @@ interface IMarkerProps {
   lng: number;
   children: JSX.Element[] | JSX.Element,
   busStopNumber?: number;
+  city?: string;
 }
 
 const LinkMarker = ( props: IMarkerProps ) => (
   <div style={ { position: 'relative', transform: 'translate(-50%, -50%)' } }>
-    <Link to={ `/busStop/${ props.busStopNumber }` }>{ props.children }</Link>
+    <Link to={ `/busStop/${props.city}/${ props.busStopNumber }` }>{ props.children }</Link>
   </div>
 );
 

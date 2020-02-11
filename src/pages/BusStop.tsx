@@ -5,17 +5,20 @@ import DelaysCardsList from '../components/DelaysCard/DelaysCardsList';
 import { DataContext } from '../Shared/DataContext';
 import { getDelay } from '../Shared/DataService';
 
-const BusStop = ( props: RouteComponentProps<{ busStopId: string }> ) => {
+const BusStop = ( props: RouteComponentProps<{ city: string, busStopId: string }> ) => {
+    const busStopId = props.match.params.busStopId;
+    const city = props.match.params.city;
+    
     const [delays, setDelays] = useState( [] );
     const [loading, setLoading] = useState( true );
     const dataContext = useContext( DataContext );
-    const currentStop = dataContext.stopData.find( stop => stop.stopId.toString() === props.match.params.busStopId );
+    const currentStop = dataContext.stopData.find( stop => stop.stopId.toString() === busStopId );
     if ( currentStop ) {
         dataContext.setCurrentStopData( currentStop );
     }
     
     useEffect( () => {
-        getDelay( props.match.params.busStopId )
+        getDelay( city, busStopId )
             .then( data => {
                 const { delay } = data;
                 setDelays( delay );
@@ -39,7 +42,7 @@ const BusStop = ( props: RouteComponentProps<{ busStopId: string }> ) => {
                         </div>
                     </div>
                 :
-                <DelaysCardsList delays={ delays } busStopNumber={ props.match.params.busStopId }/> }
+                <DelaysCardsList delays={ delays } busStopNumber={ props.match.params.busStopId } city={city}/> }
             <button className='btn btn-link btn-block' onClick={ () => props.history.goBack() }>
                 Powrót
             </button>
