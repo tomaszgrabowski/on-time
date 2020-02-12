@@ -1,6 +1,6 @@
-import { ICommonStop } from './../backend/Common.interfaces';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ICommonStop } from './Shared/ICommonStop';
 import CityPage from './pages/CityPage';
 import Header, { INavRoute } from './components/Navigation/Header';
 import AppInfo from './pages/AppInfo';

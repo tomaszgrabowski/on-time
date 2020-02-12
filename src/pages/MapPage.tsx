@@ -1,17 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ICommonStop } from './../../backend/Common.interfaces';
 import * as geolib from 'geolib';
 import GoogleMapReact from 'google-map-react';
 import React, { useContext, useEffect, useState } from 'react';
 import { geolocated, GeolocatedProps } from 'react-geolocated';
 import { RouteComponentProps } from 'react-router-dom';
+import { ICommonStop } from '../Shared/ICommonStop';
 import Container from '../components/Container';
 import LinkMarker from '../components/Map/LinkMarker';
 import Marker from '../components/Map/Marker';
 import { DataContext } from '../Shared/DataContext';
 import { getGpsData, getStops } from '../Shared/DataService';
 import { IGpsData } from '../Shared/IGpsData';
-import { IStop } from '../Shared/IStops';
 import { getLocalCache } from '../Shared/LocalStorageService';
 
 
@@ -24,14 +23,14 @@ const MapPage = ( props: RouteComponentProps<{ city: string, vehicleId: string, 
   const latitude = props.coords?.latitude;
   
   const [vehicleData, setVehicleData] = useState<IGpsData | undefined>( undefined );
-  const [currentStopData, setCurrentStopData] = useState<IStop | undefined>( undefined );
-  const [stops, setStops] = useState<IStop[] | undefined>( undefined );
+  const [currentStopData, setCurrentStopData] = useState<ICommonStop | undefined>( undefined );
+  const [stops, setStops] = useState<ICommonStop[] | undefined>( undefined );
   
   const dataContext = useContext( DataContext );
   
   useEffect( () => {
     getStops(city).then( data => {
-      const currentStop = getLocalCache().stops.find( ( stop: IStop ) => stop.stopId.toString() === stopId );
+      const currentStop = getLocalCache().stops.find( ( stop: ICommonStop ) => stop.stopId.toString() === stopId );
       if ( currentStop ) {
         setCurrentStopData( currentStop );
       }
@@ -78,7 +77,7 @@ const MapPage = ( props: RouteComponentProps<{ city: string, vehicleId: string, 
                             >
                               <FontAwesomeIcon size='3x' icon='map-pin' color='Gray'/>
                             </LinkMarker>) ) }
-                          { longitude && latitude && <Marker lat={ latitude } lng={ longitude }>
+                          { longitude && latitude && <Marker lat={ latitude.toString() } lng={ longitude.toString() }>
                             <FontAwesomeIcon size='3x' icon='male' color='Gray'/>
                           </Marker> }
                           { currentStopData &&
@@ -86,8 +85,8 @@ const MapPage = ( props: RouteComponentProps<{ city: string, vehicleId: string, 
                             <FontAwesomeIcon size='3x' icon='map-pin' color='Gray'/>
                           </Marker> }
                           { vehicleData && <Marker
-                            lat={ vehicleData?.Lat }
-                            lng={ vehicleData?.Lon }>
+                            lat={ vehicleData?.Lat.toString() }
+                            lng={ vehicleData?.Lon.toString() }>
                             <FontAwesomeIcon size='3x' icon='bus' color='DeepPink'/>
                           </Marker> }
                     </GoogleMapReact>

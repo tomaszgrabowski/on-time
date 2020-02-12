@@ -25,4 +25,3 @@ export type IHaveEndpoints = {
 }
 
 export const getUrlFromConfig = ( endpoint: Endpoint, city: City ) => urls[endpoint][city];
-export const appName: string = 'przystanek.online';

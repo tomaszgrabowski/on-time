@@ -1,7 +1,7 @@
 import React from 'react';
 import WithLoading from './WithLoading';
 
-const LoadingComponent = () => {
+const LoadingInfo = () => {
     return (
       <div>
           Dane zostały pobrane...
@@ -9,4 +9,4 @@ const LoadingComponent = () => {
     );
 };
 
-export default WithLoading( LoadingComponent );
+export default WithLoading( LoadingInfo );

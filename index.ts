@@ -1,5 +1,6 @@
 import { City } from './backend/City';
-import { ICommonStop, IDelayResponse } from './backend/Common.interfaces';
+import { ICommonStop } from './src/Shared/ICommonStop';
+import { IDelayResponse } from './backend/Common.interfaces';
 import { getUrlFromConfig } from './backend/config';
 import { Endpoint } from './backend/Endpoint';
 import { IGdanskGpsPositionsResponse, IGdanskStop, IGdanskStopsResponse } from './backend/Gdansk.interfaces';
@@ -30,7 +31,6 @@ app.get( '/gpsPositions/:city', ( req: any, res: any ) => {
 );
 
 app.get( '/stops/:city', ( req: any, res: any ) => {
-      console.log( `${ getUrlFromConfig( Endpoint.stops, req.params.city ) }` );
       fetch( `${ getUrlFromConfig( Endpoint.stops, req.params.city ) }` )
           .then( ( raw: any ) => raw.json()
               .then( ( data: IGdanskStopsResponse & IGdyniaStop[] ): void => {

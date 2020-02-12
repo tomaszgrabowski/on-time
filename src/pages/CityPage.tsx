@@ -8,12 +8,12 @@ const CityPage = () => {
             <Link to={`/loading/gdansk`}
                 type="button"
                 className="btn btn-warning btn-lg btn-block">
-              Gdańsk
+                Gdańsk
             </Link>
           <Link to={`/loading/gdynia`}
                 type="button"
                 className="btn btn-warning btn-lg btn-block">
-            Gdynia
+              Gdynia
           </Link>
         </Container>
     );
