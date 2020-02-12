@@ -35,7 +35,7 @@ const StopsList = ( props: RouteComponentProps<{ city: string }> & GeolocatedPro
                 latitude: cords.lat,
                 longitude: cords.lon
             },
-            500
+            1000
         );
     return (
         <Container>
