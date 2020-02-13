@@ -16,7 +16,7 @@ const Author = () => {
           <a href='https://tomaszgrabowski.github.io/' target='_blank'>https://tomaszgrabowski.github.io</a>
         </p>
         <p>
-          <a href='https://github.com/tomaszgrabowski/' target='_blank'>hhttps://github.com/tomaszgrabowski/</a>
+          <a href='https://github.com/tomaszgrabowski/' target='_blank'>https://github.com/tomaszgrabowski/</a>
         </p>
         <p>
           <a href='https://pl.linkedin.com/in/tomasz-grabowski-47291257' target='_blank'>https://pl.linkedin.com/in/tomasz-grabowski-47291257</a>

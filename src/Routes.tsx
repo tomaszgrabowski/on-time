@@ -1,6 +1,6 @@
-import { ICommonStop } from './../backend/Common.interfaces';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ICommonStop } from './Shared/ICommonStop';
 import CityPage from './pages/CityPage';
 import Header, { INavRoute } from './components/Navigation/Header';
 import AppInfo from './pages/AppInfo';
@@ -30,14 +30,11 @@ export const appName: string = "przystanek.online";
 
 const Routes = () => {
     const [stopData, setStopData] = useState<ICommonStop[]>( [] );
-    const [currentStopData, setCurrentStopData] = useState<ICommonStop>( {} as ICommonStop );
     
     return (
       <DataContext.Provider value={ {
           stopData: stopData,
-          setStopData,
-          currentStopData: currentStopData,
-          setCurrentStopData
+          setStopData
       } }>
           <Router>
               <Header appName={ appName } menuItems={ navRoutes }/>

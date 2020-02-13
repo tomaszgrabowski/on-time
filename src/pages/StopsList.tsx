@@ -1,8 +1,8 @@
-import { ICommonStop } from './../../backend/Common.interfaces';
 import * as geolib from 'geolib';
 import React, { useContext, useEffect, useState } from 'react';
 import { geolocated, GeolocatedProps } from 'react-geolocated';
 import { Link, RouteComponentProps } from 'react-router-dom';
+import { ICommonStop } from '../Shared/ICommonStop';
 import Container from '../components/Container';
 import { DataContext } from '../Shared/DataContext';
 import { ICoords } from '../Shared/ICoords';
@@ -35,7 +35,7 @@ const StopsList = ( props: RouteComponentProps<{ city: string }> & GeolocatedPro
                 latitude: cords.lat,
                 longitude: cords.lon
             },
-            500
+            1000
         );
     return (
         <Container>

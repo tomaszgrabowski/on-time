@@ -1,5 +1,6 @@
 import React from 'react';
-import DelayCard from '../../components/DelaysCard/DelayCard';
+import WithLoading from '../Loading/WithLoading';
+import DelayCard from '../DelaysCard/DelayCard';
 import { IDelay } from '../../Shared/IDelay';
 
 interface IProps {
@@ -20,4 +21,4 @@ const DelaysCardsList = ( props: IProps ) => {
   );
 };
 
-export default DelaysCardsList;
+export default WithLoading(DelaysCardsList);

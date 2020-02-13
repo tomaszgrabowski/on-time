@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface IMarkerProps {
-  lat: number;
-  lng: number;
+  lat: string;
+  lng: string;
   children: JSX.Element[] | JSX.Element,
-  busStopNumber?: number;
+  busStopNumber?: string;
   city?: string;
 }
 
