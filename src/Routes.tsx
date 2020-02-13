@@ -30,14 +30,11 @@ export const appName: string = "przystanek.online";
 
 const Routes = () => {
     const [stopData, setStopData] = useState<ICommonStop[]>( [] );
-    const [currentStopData, setCurrentStopData] = useState<ICommonStop>( {} as ICommonStop );
     
     return (
       <DataContext.Provider value={ {
           stopData: stopData,
-          setStopData,
-          currentStopData: currentStopData,
-          setCurrentStopData
+          setStopData
       } }>
           <Router>
               <Header appName={ appName } menuItems={ navRoutes }/>

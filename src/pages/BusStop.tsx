@@ -7,17 +7,12 @@ import { getDelay } from '../Shared/DataService';
 
 // useReducer here
 const BusStop = ( props: RouteComponentProps<{ city: string, busStopId: string }> ) => {
-  const busStopId = props.match.params.busStopId;
-  const city = props.match.params.city;
+  
+  const { busStopId, city } = props.match.params;
   
   const [delays, setDelays] = useState( [] );
   const [loading, setLoading] = useState( true );
   const [error, setError] = useState( false );
-  const dataContext = useContext( DataContext );
-  const currentStop = dataContext.stopData.find( stop => stop.stopId.toString() === busStopId );
-  if ( currentStop ) {
-    dataContext.setCurrentStopData( currentStop );
-  }
   
   useEffect( () => {
     getDelay( city, busStopId )

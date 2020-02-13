@@ -4,6 +4,4 @@ import { ICommonStop } from '../Shared/ICommonStop';
 export const DataContext = React.createContext({
   stopData: [] as ICommonStop[],
   setStopData: (data: ICommonStop[]) => {},
-  currentStopData: {} as ICommonStop,
-  setCurrentStopData: (data: ICommonStop) => {}
 });
