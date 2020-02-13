@@ -1,6 +1,6 @@
 import React from 'react';
+import { appName } from '../Routes';
 import Container from '../components/Container';
-import { appName } from '../config';
 import Logo from '../logo.png';
 
 const AppInfo = () => {
@@ -9,7 +9,7 @@ const AppInfo = () => {
       <img className='logo' src={ Logo } alt={ appName }/>
       <section>
         <h2>
-          Aplikacja OnTime v0.1 (beta)
+          Aplikacja OnTime v0.2 (beta)
         </h2>
         <p>
           Drodzy użytkownicy!
@@ -22,10 +22,10 @@ const AppInfo = () => {
         <p>
           Jej głównym założeniem jest dostarczenie Wam informacji o realnych czasach przyjazdu autobusu lub tramwaju,
           na który właśnie czekacie. Wraz z przejrzystą listą aktualnych opóźnień, możecie też zlokalizować pojazd za
-          pomocą mapy.
+          pomocą mapy (miasto Gdańsk).
         </p>
         <p>
-          Dziękuję za korzystanie z OnTime i zachęcam do dzielenia się wrażeniami.
+          Dziękuję za korzystanie z www.przystanek.online.
         </p>
       </section>
     </Container>

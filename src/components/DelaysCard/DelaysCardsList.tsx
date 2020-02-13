@@ -1,20 +1,24 @@
 import React from 'react';
-import DelayCard from '../../components/DelaysCard/DelayCard';
+import WithLoading from '../Loading/WithLoading';
+import DelayCard from '../DelaysCard/DelayCard';
 import { IDelay } from '../../Shared/IDelay';
 
 interface IProps {
-    delays: IDelay[];
-    busStopNumber: string;
+  delays: IDelay[];
+  busStopNumber: string;
+  city: string
 }
 
 const DelaysCardsList = ( props: IProps ) => {
-    return (
-        <div className='row'>
-            {props.delays.map((delay: IDelay) => <DelayCard key={ delay.trip }
-                                                             delay={ delay }
-                                                             busStopNumber={ props.busStopNumber }/> ) }
-        </div>
-    );
+  return (
+      <div className='row'>
+        { props.delays.map( ( delay: IDelay ) => <DelayCard key={ delay.trip }
+                                                            delay={ delay }
+                                                            busStopNumber={ props.busStopNumber }
+                                                            city={ props.city }
+        /> ) }
+      </div>
+  );
 };
 
-export default DelaysCardsList;
+export default WithLoading(DelaysCardsList);

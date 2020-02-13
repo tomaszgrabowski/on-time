@@ -1,60 +1,43 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { geolocated } from 'react-geolocated';
 import { RouteComponentProps } from 'react-router-dom';
+import { ActionName, loadingReducer, loadingReducerInitialState } from './../Shared/LoadingReducer';
 import Container from '../components/Container';
-import { appName } from '../config';
-import Logo from '../logo.png';
 import { DataContext } from '../Shared/DataContext';
 import { getStops } from '../Shared/DataService';
-import { getStopsFromLocalCache } from '../Shared/LocalStorageService';
+import { getLocalCache } from '../Shared/LocalStorageService';
+import LoadingInfo from './../components/Loading/LoadingInfo';
 
-const LoadingPage = ( props: RouteComponentProps ) => {
-    const [progressValue, setProgressValue] = useState( 0 );
-    const [error, setError] = useState( false );
+const LoadingPage = ( props: RouteComponentProps<{ city: string }> ) => {
+    const [loadingState, dispatch] = useReducer( loadingReducer, loadingReducerInitialState );
     const dataContext = useContext( DataContext );
-    const { tooOld, stops } = getStopsFromLocalCache();
+    const currentCity = props.match.params.city;
     
     useEffect( () => {
-        const promises: Promise<any>[] = [];
-        
-        if ( !tooOld ) {
+        dispatch( { type: ActionName.SET_LOADING } );
+        const { tooOld, stops, city } = getLocalCache();
+        if ( !tooOld && city === currentCity ) {
             dataContext.setStopData( stops );
-            setProgressValue( progressValue + 50 );
+            dispatch( { type: ActionName.SET_LOADED } );
+            props.history.push( `/stopsList/${ currentCity }` );
         } else {
-            const stops = getStops
+            getStops( currentCity )
               .then( data => {
-                    dataContext.setStopData( data.stops );
+                    dataContext.setStopData( data );
                     localStorage.setItem( 'stops', JSON.stringify( data ) );
-                    setProgressValue( progressValue + 50 );
-                }
+                    localStorage.setItem( 'lastUpdate', `"${ new Date().toUTCString() }"` );
+                    localStorage.setItem( 'city', currentCity );
+                    dispatch( { type: ActionName.SET_LOADED } );
+                    props.history.push( `/stopsList/${ currentCity }` );
+                },
+                () => dispatch( { type: ActionName.SET_ERROR } )
               );
-            promises.push( stops );
         }
-        
-        Promise.all( promises )
-          .then( () => props.history.push( '/stopsList' ) )
-          .catch( ( err ) => setError( true ) );
     }, [] );
     
     return (
       <Container className='text-center'>
-          <img src={ Logo } alt={ appName }/>
-          <section>
-              <p>
-                  Trwa ładowanie danych...
-              </p>
-              <div className="progress">
-                  <div className="progress-bar progress-bar-striped" role="progressbar" aria-valuenow={ progressValue }
-                       style={ { width: `${ progressValue }%` } }
-                       aria-valuemin={ 0 } aria-valuemax={ 100 }>&nbsp;</div>
-              </div>
-              <br/>
-              { error && <div className="alert alert-danger" role="alert">
-                <h4 className="alert-heading">Nieoczekiwany błąd!</h4>
-                <p>Mamy aktualnie problem z pozyskaniem danych od ZTM Gdańsk. Prosimy spróbuj ponownie za kilka
-                  minut...</p>
-              </div> }
-          </section>
+          <LoadingInfo error={ loadingState.error } loading={ loadingState.loading }/>
       </Container>
     );
 };

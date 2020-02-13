@@ -1,49 +1,40 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+import { AlertLevel } from '../Shared/AlertLevel';
+import Alert from '../components/Alert';
 import Container from '../components/Container';
 import DelaysCardsList from '../components/DelaysCard/DelaysCardsList';
-import { DataContext } from '../Shared/DataContext';
 import { getDelay } from '../Shared/DataService';
 
-const BusStop = ( props: RouteComponentProps<{ busStopId: string }> ) => {
+// useReducer here
+const BusStop = ( props: RouteComponentProps<{ city: string, busStopId: string }> ) => {
+    
+    const { busStopId, city } = props.match.params;
+    
     const [delays, setDelays] = useState( [] );
     const [loading, setLoading] = useState( true );
-    const dataContext = useContext( DataContext );
-    const currentStop = dataContext.stopData.find( stop => stop.stopId.toString() === props.match.params.busStopId );
-    if ( currentStop ) {
-        dataContext.setCurrentStopData( currentStop );
-    }
+    const [error, setError] = useState( false );
     
     useEffect( () => {
-        getDelay( props.match.params.busStopId )
-            .then( data => {
-                const { delay } = data;
-                setDelays( delay );
-                setLoading( false );
-            } );
+        getDelay( city, busStopId )
+          .then( data => {
+              const { delay } = data;
+              setDelays( delay );
+              setLoading( false );
+          }, reason => setError( true ) );
     }, [] );
     
     return (
-        <Container>
-            { delays.length === 0 ?
-                loading === false ?
-                    <span>
-                        <div className="alert alert-info" role="alert">
-                            Aktualnie żaden pojazd nie zmierza na ten przystanek...
-                        </div>
-                    </span>
-                    :
-                    <div className='text-center'>
-                        <div className="spinner-border text-warning" role="status">
-                            <span className="sr-only">Loading...</span>
-                        </div>
-                    </div>
-                :
-                <DelaysCardsList delays={ delays } busStopNumber={ props.match.params.busStopId }/> }
-            <button className='btn btn-link btn-block' onClick={ () => props.history.goBack() }>
-                Powrót
-            </button>
-        </Container>
+      <Container>
+          { delays.length === 0 && !loading ?
+            <Alert level={ AlertLevel.Warning } message='Aktualnie żaden pojazd nie zmierza na ten przystanek...'/>
+            :
+            <DelaysCardsList loading={ loading } error={ error } delays={ delays } busStopNumber={ props.match.params.busStopId }
+                             city={ city }/> }
+          <button className='btn btn-link btn-block' onClick={ () => props.history.goBack() }>
+              Powrót
+          </button>
+      </Container>
     );
 };
 

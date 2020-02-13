@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface IMarkerProps {
-  lat: number;
-  lng: number;
+  lat: string;
+  lng: string;
   children: JSX.Element[] | JSX.Element
 }
 
