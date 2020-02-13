@@ -8,7 +8,7 @@ interface IProps {
 
 const Alert = ( props: IProps ) => {
     return (
-      <div className={ `alert ${ props.level }` } role="alert">
+      <div className={ `alert text-center ${ props.level }` } role="alert">
           <h4 className="alert-heading">Uwaga!</h4>
           <p>{ props.message }</p>
       </div>
