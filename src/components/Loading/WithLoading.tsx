@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import ErrorAlert from './ErrorAlert';
+import { AlertLevel } from '../../Shared/AlertLevel';
+import Alert from '../Alert';
 import LoadingSpinner from './LoadingSpinner';
 
 interface IProps {
@@ -15,7 +16,7 @@ const WithLoading =
       <div>
           {
               error ?
-                <ErrorAlert message={ loadingErrorMessage }/>
+                <Alert level={AlertLevel.Danger} message={ loadingErrorMessage }/>
                 :
                 loading ?
                   <LoadingSpinner/>

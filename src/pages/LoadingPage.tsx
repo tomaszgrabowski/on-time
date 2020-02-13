@@ -6,7 +6,7 @@ import Container from '../components/Container';
 import { DataContext } from '../Shared/DataContext';
 import { getStops } from '../Shared/DataService';
 import { getLocalCache } from '../Shared/LocalStorageService';
-import LoadingInfo from './../components/LoadingInfo';
+import LoadingInfo from './../components/Loading/LoadingInfo';
 
 const LoadingPage = ( props: RouteComponentProps<{ city: string }> ) => {
     const [loadingState, dispatch] = useReducer( loadingReducer, loadingReducerInitialState );

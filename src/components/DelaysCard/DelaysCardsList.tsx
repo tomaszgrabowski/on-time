@@ -1,5 +1,5 @@
 import React from 'react';
-import WithLoading from '../WithLoading';
+import WithLoading from '../Loading/WithLoading';
 import DelayCard from '../DelaysCard/DelayCard';
 import { IDelay } from '../../Shared/IDelay';
 
