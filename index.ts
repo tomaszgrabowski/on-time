@@ -36,7 +36,7 @@ app.get( '/stops/:city', ( req: any, res: any ) => {
               .then( ( data: IGdanskStopsResponse & IGdyniaStop[] ): void => {
                 let _stops: ICommonStop[] = [];
                 if ( req.params.city === City.Gdansk ) {
-                  _stops = data.stops.filter( ( stop: IGdanskStop ) => stop.virtual === 0 && stop.onDemand === 0 ).map( ( stop: IGdanskStop ): ICommonStop => {
+                  _stops = data.stops.map( ( stop: IGdanskStop ): ICommonStop => {
                     return {
                       stopLat: `${ stop.stopLat }`,
                       stopLon: `${ stop.stopLon }`,
