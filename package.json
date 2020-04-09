@@ -66,5 +66,8 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.1.0"
   },
-  "proxy": "http://localhost:1334"
+  "proxy": "http://localhost:1334",
+  "engines": {
+    "node": "12.13.0"
+  }
 }
